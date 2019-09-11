@@ -1,0 +1,14 @@
+---
+-  hosts: all
+   user: dimpy
+   become: true
+   become_method: sudo
+   gather_facts: false
+   tasks:
+    - name: Rpc debug
+      command: "{{item}}"
+      with_items:
+       - "rpcdebug -m nfs -s all"
+       - "rpcdebug -m rpc -s all"
+       - "systemctl restart rsyslog.service"
+  

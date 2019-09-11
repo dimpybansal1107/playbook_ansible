@@ -1,0 +1,13 @@
+---
+- hosts: all
+  user: dimpy
+  become: true
+  become_method: sudo
+  tasks:
+   - name: commenting log conf
+     copy:
+        src=/home/dimpy/rpc
+        dest=/etc/logrotate.d/
+        force=yes
+        owner=root
+        group=root
